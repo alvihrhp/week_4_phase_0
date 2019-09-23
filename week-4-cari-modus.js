@@ -1,5 +1,6 @@
 function cariModus(arr) {
     let obj = {};
+    let highest = 0;
     for(let i = 0; i < arr.length; i++){
         for(let j = 0; j < arr.length; j++){
             if(obj[arr[i]] === undefined){
@@ -7,6 +8,22 @@ function cariModus(arr) {
             }
         }
         obj[arr[i]]++;
+    }
+    let objKey = Object.keys(obj);
+    if(objKey.length === arr.length){
+        return -1 
+    }
+    for(let key in obj){
+        if(obj[key] === arr.length){
+            return -1
+        } else if(obj[key] > highest){
+            highest = obj[key];
+        }
+    }
+    for(let key in obj){
+        if(obj[key] === highest){
+            return key
+        }
     }
   }
   
